@@ -1,0 +1,722 @@
+<!doctype html>
+<html lang="uk">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Резюме Мазура Сергія Миколайовича — Junior Web Developer. Навички, проєкти, освіта, контакти." />
+  <title>Мазур Сергій Миколайович — Резюме</title>
+
+  <!-- Open Graph (для красивого прев’ю в месенджерах) -->
+  <meta property="og:title" content="Мазур Сергій Миколайович — Резюме" />
+  <meta property="og:description" content="Junior Web Developer: проєкти, навички, освіта, контакти." />
+  <meta property="og:type" content="website" />
+
+  <style>
+    :root{
+      --bg: #0b1020;
+      --panel: rgba(255,255,255,0.06);
+      --panel2: rgba(255,255,255,0.10);
+      --text: rgba(255,255,255,0.92);
+      --muted: rgba(255,255,255,0.70);
+      --muted2: rgba(255,255,255,0.55);
+      --line: rgba(255,255,255,0.12);
+      --accent: #7c3aed; /* фіолетовий */
+      --accent2: #22c55e; /* зелений */
+      --shadow: 0 20px 60px rgba(0,0,0,0.45);
+      --radius: 18px;
+      --max: 1100px;
+      --font: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+    }
+
+    *{ box-sizing: border-box; }
+    html, body{
+      margin:0;
+      font-family: var(--font);
+      color: var(--text);
+      background:
+        radial-gradient(800px 400px at 15% 10%, rgba(124,58,237,0.35), transparent 60%),
+        radial-gradient(700px 450px at 85% 0%, rgba(34,197,94,0.22), transparent 55%),
+        radial-gradient(900px 600px at 40% 105%, rgba(59,130,246,0.16), transparent 60%),
+        var(--bg);
+      line-height: 1.55;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* Сніг (canvas) */
+    #snow{
+      position: fixed;
+      inset: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: 0;
+      pointer-events: none;
+      opacity: 0.75;
+    }
+
+    .wrap{ position: relative; z-index: 1; max-width: var(--max); margin: 0 auto; padding: 28px 18px 80px; }
+
+    a{ color: inherit; text-decoration: none; }
+    a:hover{ text-decoration: underline; }
+
+    .skip{
+      position:absolute;
+      left:-999px;
+      top:10px;
+      background:#fff;
+      color:#000;
+      padding:10px 12px;
+      border-radius: 10px;
+      z-index: 999;
+    }
+    .skip:focus{ left:10px; }
+
+    .wrap{ max-width: var(--max); margin: 0 auto; padding: 28px 18px 80px; }
+
+    header{
+      position: sticky;
+      top: 14px;
+      z-index: 50;
+      backdrop-filter: blur(10px);
+    }
+
+    .nav{
+      display:flex;
+      align-items:center;
+      justify-content: space-between;
+      gap: 16px;
+      background: rgba(10,12,22,0.55);
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 10px 12px;
+      box-shadow: var(--shadow);
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap: 10px;
+      padding: 6px 10px;
+      border-radius: 999px;
+    }
+
+    .avatar{
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, rgba(124,58,237,0.9), rgba(34,197,94,0.8));
+      display:grid;
+      place-items:center;
+      font-weight: 800;
+      letter-spacing: .5px;
+      color: #0b1020;
+    }
+
+    .brand b{ font-size: 14px; }
+    .brand span{ display:block; font-size: 12px; color: var(--muted2); margin-top: 1px; }
+
+    .links{
+      display:flex;
+      align-items:center;
+      gap: 8px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      gap: 8px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.04);
+      font-size: 13px;
+      color: var(--muted);
+      transition: transform .15s ease, background .15s ease, border-color .15s ease;
+      white-space: nowrap;
+    }
+    .pill:hover{ transform: translateY(-1px); background: rgba(255,255,255,0.07); border-color: rgba(255,255,255,0.22); text-decoration:none; }
+
+    .pill.primary{
+      color: rgba(255,255,255,0.95);
+      border-color: rgba(124,58,237,0.45);
+      background: rgba(124,58,237,0.15);
+    }
+
+    .pill svg{ width: 16px; height: 16px; opacity: .9; }
+
+    main{ margin-top: 22px; }
+
+    .hero{
+      display:grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 18px;
+      align-items: stretch;
+    }
+
+    @media (max-width: 860px){
+      .hero{ grid-template-columns: 1fr; }
+      header{ position: static; }
+    }
+
+    .card{
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 18px;
+      box-shadow: var(--shadow);
+    }
+
+    .hero h1{
+      margin: 0 0 10px;
+      font-size: clamp(26px, 3.2vw, 42px);
+      line-height: 1.12;
+      letter-spacing: -0.02em;
+    }
+
+    .subtitle{
+      margin: 0 0 14px;
+      color: var(--muted);
+      font-size: 15px;
+      max-width: 68ch;
+    }
+
+    .badges{
+      display:flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .badge{
+      padding: 7px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.04);
+      font-size: 12px;
+      color: rgba(255,255,255,0.86);
+    }
+
+    .badge.accent{ border-color: rgba(34,197,94,0.45); background: rgba(34,197,94,0.10); }
+    .badge.accent2{ border-color: rgba(124,58,237,0.45); background: rgba(124,58,237,0.12); }
+
+    .grid{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      margin-top: 18px;
+    }
+
+    @media (max-width: 860px){
+      .grid{ grid-template-columns: 1fr; }
+    }
+
+    section{ scroll-margin-top: 100px; }
+
+    .section-title{
+      display:flex;
+      align-items:center;
+      justify-content: space-between;
+      gap: 10px;
+      margin: 0 0 12px;
+    }
+
+    .section-title h2{
+      margin: 0;
+      font-size: 16px;
+      letter-spacing: .02em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.86);
+    }
+
+    .section-title .hint{ font-size: 12px; color: var(--muted2); }
+
+    .list{ display:flex; flex-direction: column; gap: 12px; }
+
+    .item{
+      padding: 14px;
+      border-radius: 14px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.03);
+    }
+
+    .item-head{
+      display:flex;
+      align-items:flex-start;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 8px;
+    }
+
+    .item h3{ margin: 0; font-size: 15px; }
+
+    .meta{ color: var(--muted2); font-size: 12px; }
+
+    .item p{ margin: 8px 0 0; color: var(--muted); font-size: 13px; }
+
+    ul.bullets{
+      margin: 8px 0 0;
+      padding-left: 18px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .skills{
+      display:flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .skill{
+      font-size: 12px;
+      padding: 7px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.03);
+      color: rgba(255,255,255,0.86);
+    }
+
+    .projects .item a{ text-decoration: none; }
+    .projects .item a:hover{ text-decoration: underline; }
+
+    footer{
+      margin-top: 18px;
+      color: var(--muted2);
+      font-size: 12px;
+      text-align: center;
+    }
+
+    /* Підсвітка секції при навігації */
+    @keyframes sectionFlash {
+      0% {
+        box-shadow: var(--shadow);
+        border-color: var(--line);
+        background: var(--panel);
+      }
+      15% {
+        box-shadow: 0 0 0 5px rgba(124,58,237,0.35), var(--shadow);
+        border-color: rgba(124,58,237,0.65);
+        background: rgba(124,58,237,0.10);
+      }
+      100% {
+        box-shadow: var(--shadow);
+        border-color: var(--line);
+        background: var(--panel);
+      }
+    }
+
+    .flash-section{
+      animation: sectionFlash 1.2s ease-out;
+    }
+
+    /* Друк / PDF */
+    @media print{
+      header{ position: static; }
+      .nav{ box-shadow: none; }
+      body{ background: #fff; color:#000; }
+      .card, .item{ box-shadow: none; border-color: #ddd; }
+      .pill{ display:none; }
+      a{ text-decoration: none; color:#000; }
+    }
+  </style>
+</head>
+<body>
+  <canvas id="snow" aria-hidden="true"></canvas>
+  <a class="skip" href="#content">Перейти до змісту</a>
+
+  <div class="wrap">
+    <header aria-label="Навігація">
+      <div class="nav">
+        <a class="brand" href="#top" aria-label="На початок">
+          <div class="avatar" aria-hidden="true">СМ</div>
+          <div>
+            <b>Мазур Сергій Миколайович</b>
+            <span>Junior Frontend Developer</span>
+          </div>
+        </a>
+
+        <nav class="links" aria-label="Посилання">
+          <a class="pill" href="#experience">Досвід</a>
+          <a class="pill" href="#projects">Проєкти</a>
+          <a class="pill" href="#skills">Навички</a>
+          <a class="pill" href="#education">Освіта</a>
+          <a class="pill" href="#contact">Контакти</a>
+          <button class="pill primary" id="btnPrint" type="button" title="Зберегти як PDF через друк">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 7V3h10v4M7 17v4h10v-4M6 10h12a3 3 0 0 1 3 3v3h-4v-2H7v2H3v-3a3 3 0 0 1 3-3Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            PDF
+          </button>
+        </nav>
+      </div>
+    </header>
+
+    <main id="content">
+      <div class="hero" id="top">
+        <section class="card" aria-label="Про мене">
+          <h1>Мазур Сергій Миколайович</h1>
+          <p class="subtitle">
+            Junior Frontend Developer: створюю адаптивні сторінки та прості веб‑інтерфейси на HTML/CSS/JavaScript. Навчаюсь на 3 курсі Херсонського технічного університету (ХТУ), спеціальність — інженерія програмного забезпечення.
+            <br /><br />
+            <span style="color: var(--muted2);">Дата народження:</span> 16.11.2005 · <span style="color: var(--muted2);">Локація:</span> Херсонська область, м. Генічеськ
+          </p>
+
+          <div class="badges" aria-label="Ключові теги">
+            <span class="badge accent2">HTML</span>
+            <span class="badge accent">CSS</span>
+            <span class="badge">JavaScript</span>
+            <span class="badge">Адаптивність</span>
+            <span class="badge">Git</span>
+          </div>
+        </section>
+
+        <aside class="card" aria-label="Швидкі контакти">
+          <div class="section-title">
+            <h2>Контакти</h2>
+            
+          </div>
+          <div class="list">
+            <div class="item">
+              <div class="item-head">
+                <h3>Email</h3>
+                <div class="meta"><a href="mailto:022062@university.kherson.ua">022062@university.kherson.ua</a></div>
+              </div>
+              
+            </div>
+            <div class="item">
+              <div class="item-head">
+                <h3>Локація</h3>
+                <div class="meta">Херсонська область, м. Генічеськ · Remote</div>
+              </div>
+              <div class="meta">Формат: віддалено</div>
+            </div>
+            <div class="item">
+              <div class="item-head">
+                <h3>Посилання</h3>
+                <div class="meta"></div>
+              </div>
+              <ul class="bullets">
+                <li><a href="https://github.com/zxcqwwww" target="_blank" rel="noreferrer">GitHub: zxcqwwww</a></li>
+                <li><a href="https://t.me/suiidexzc" target="_blank" rel="noreferrer">Telegram: @suiidexzc</a></li>
+              </ul>
+            </div>
+              <ul class="bullets">
+                <li><a href="https://github.com/zxcqwwww" target="_blank" rel="noreferrer">GitHub: zxcqwwww</a></li>
+                <li><a href="https://t.me/suiidexzc" target="_blank" rel="noreferrer">Telegram: @suiidexzc</a></li>
+              </ul>
+            </div>
+          </div>
+        </aside>
+      </div>
+
+      <div class="grid">
+        <section class="card" id="experience" aria-label="Досвід роботи">
+          <div class="section-title">
+            <h2>Досвід</h2>
+          </div>
+
+          <div class="list">
+            <article class="item">
+              <div class="item-head">
+                <div>
+                  <h3>Навчальні та власні проєкти — Frontend Developer (Junior)</h3>
+                  <div class="meta">Херсонська область · Remote</div>
+                </div>
+                <div class="meta">2023 — теперішній час</div>
+              </div>
+              <ul class="bullets">
+                <li>Адаптивна верстка сторінок (Flex/Grid), акуратна семантична розмітка.</li>
+                <li>Базова інтерактивність на JavaScript: меню, модальні вікна, форми.</li>
+                <li>Підготовка до публікації: оптимізація зображень, мета‑теги, структура проєкту.</li>
+              </ul>
+            </article>
+
+            <article class="item">
+              <div class="item-head">
+                <div>
+                  <h3>Університетські роботи — Web (практика)</h3>
+                  <div class="meta">ХТУ</div>
+                </div>
+                <div class="meta">2022 — теперішній час</div>
+              </div>
+              <ul class="bullets">
+                <li>Виконання лабораторних/практичних робіт із веб‑розробки та суміжних дисциплін.</li>
+                <li>Робота з інструментами розробника в браузері, виправлення помилок верстки.</li>
+              </ul>
+            </article>
+          </div>
+        </section>
+
+        <section class="card projects" id="projects" aria-label="Проєкти">
+          <div class="section-title">
+            <h2>Проєкти</h2>
+          </div>
+
+          <div class="list">
+            <article class="item">
+              <div class="item-head">
+                <div>
+                  <h3><a href="#" target="_blank" rel="noreferrer">Сайт‑резюме / Portfolio</a></h3>
+                  <div class="meta">Роль: автор · 2025</div>
+                </div>
+                <div class="meta">Web</div>
+              </div>
+              <p>
+                Односторінковий сайт‑резюме з навігацією по секціях та можливістю зберегти в PDF.
+              </p>
+              <ul class="bullets">
+                <li>Адаптивна верстка та охайний UI.</li>
+                <li>Мета‑дані для коректного прев’ю (Open Graph).</li>
+              </ul>
+            </article>
+
+            <article class="item">
+              <div class="item-head">
+                <div>
+                  <h3><a href="#" target="_blank" rel="noreferrer">Landing «Послуги та заявка»</a></h3>
+                  <div class="meta">Роль: frontend · 2024</div>
+                </div>
+                <div class="meta">Web</div>
+              </div>
+              <p>
+                Промо‑сторінка з блоками переваг, прайсом та формою заявки.
+              </p>
+              <ul class="bullets">
+                <li>Структура секцій, повторно використані стилі.</li>
+                <li>Валідація форми на клієнті (JavaScript).</li>
+              </ul>
+            </article>
+
+            <article class="item">
+              <div class="item-head">
+                <div>
+                  <h3><a href="#" target="_blank" rel="noreferrer">Міні‑додаток «Список задач»</a></h3>
+                  <div class="meta">Роль: автор · 2024</div>
+                </div>
+                <div class="meta">Web</div>
+              </div>
+              <p>
+                To‑Do застосунок: додавання, видалення, фільтрація, збереження списку в браузері.
+              </p>
+              <ul class="bullets">
+                <li>Збереження стану в LocalStorage.</li>
+                <li>Простий інтерфейс та зрозумілий код.</li>
+              </ul>
+            </article>
+          </div>
+        </section>
+
+        <section class="card" id="skills" aria-label="Навички">
+          <div class="section-title">
+            <h2>Навички</h2>
+          </div>
+
+          <div class="item" style="margin-bottom:12px;">
+            <div class="item-head">
+              <h3>Технічні</h3>
+              <div class="meta">Frontend</div>
+            </div>
+            <div class="skills" aria-label="Технічні навички">
+              <span class="skill">HTML5 (семантика)</span>
+              <span class="skill">CSS3 (Flex/Grid)</span>
+              <span class="skill">Адаптивна верстка</span>
+              <span class="skill">JavaScript (основи)</span>
+              <span class="skill">Git (основи)</span>
+              <span class="skill">DevTools</span>
+              <span class="skill">Базове SEO</span>
+              <span class="skill">Figma (читання макетів)</span>
+            </div>
+          </div>
+
+          <div class="item">
+            <div class="item-head">
+              <h3>Особисті</h3>
+              <div class="meta">soft skills</div>
+            </div>
+            <div class="skills" aria-label="Soft skills">
+              <span class="skill">Уважність до деталей</span>
+              <span class="skill">Самостійність</span>
+              <span class="skill">Відповідальність</span>
+              <span class="skill">Комунікація</span>
+              <span class="skill">Швидке навчання</span>
+            </div>
+          </div>
+        </section>
+
+        <section class="card" id="education" aria-label="Освіта та сертифікації">
+          <div class="section-title">
+            <h2>Освіта</h2>
+          </div>
+
+          <div class="list">
+            <article class="item">
+              <div class="item-head">
+                <div>
+                  <h3>Херсонський технічний університет (ХТУ)</h3>
+                  <div class="meta">3 курс · Інженерія програмного забезпечення</div>
+                </div>
+                <div class="meta">2022 — теперішній час</div>
+              </div>
+              <p>
+                Паралельно розвиваю навички веб‑розробки через практику та власні проєкти.
+              </p>
+            </article>
+          </div>
+        </section>
+
+        <section class="card" id="contact" aria-label="Зв’язок">
+          <div class="section-title">
+            <h2>Написати мені</h2>
+            
+          </div>
+
+          <div class="item">
+            <p style="margin:0 0 10px; color: var(--muted);">
+              Натисніть кнопку, щоб відкрити лист у вашому поштовому клієнті.
+            </p>
+            <a class="pill primary" href="mailto:022062@university.kherson.ua?subject=%D0%A1%D0%BF%D1%96%D0%B2%D0%BF%D1%80%D0%B0%D1%86%D1%8F%20%2F%20%D0%86%D0%BD%D1%82%D0%B5%D1%80%D0%B2%E2%80%99%D1%8E&body=%D0%94%D0%BE%D0%B1%D1%80%D0%BE%D0%B3%D0%BE%20%D0%B4%D0%BD%D1%8F%2C%20%D0%86%D0%BC%E2%80%99%D1%8F!%0A%0A%D0%9F%D0%B8%D1%88%D1%83%20%D0%B2%D0%B0%D0%BC%20%D1%89%D0%BE%D0%B4%D0%BE...">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 6h16v12H4V6Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="m4 7 8 6 8-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Відкрити лист
+            </a>
+          </div>
+        </section>
+      </div>
+
+      <footer>
+        <p style="margin:0;">© <span id="year"></span> Мазур Сергій Миколайович. Оновлено: <span id="updated"></span>.</p>
+      </footer>
+    </main>
+  </div>
+
+  <script>
+    // Автозаповнення року та дати оновлення
+    const now = new Date();
+    document.getElementById('year').textContent = String(now.getFullYear());
+    document.getElementById('updated').textContent = now.toLocaleDateString('uk-UA', { year: 'numeric', month: 'long' });
+
+    // Зберегти як PDF: використовує системний діалог друку
+    document.getElementById('btnPrint').addEventListener('click', () => window.print());
+
+    // Сніг на фоні (canvas)
+    (function initSnow(){
+      const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const canvas = document.getElementById('snow');
+      if (!canvas || reduceMotion) return;
+
+      const ctx = canvas.getContext('2d');
+      let w = 0, h = 0, dpr = 1;
+      const flakes = [];
+      const FLAKE_COUNT = 120;
+
+      function rand(min, max){ return Math.random() * (max - min) + min; }
+
+      function resize(){
+        dpr = Math.min(window.devicePixelRatio || 1, 2);
+        w = Math.floor(window.innerWidth);
+        h = Math.floor(window.innerHeight);
+        canvas.width = Math.floor(w * dpr);
+        canvas.height = Math.floor(h * dpr);
+        canvas.style.width = w + 'px';
+        canvas.style.height = h + 'px';
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      }
+
+      function makeFlake(initial=false){
+        const r = rand(0.8, 2.8);
+        return {
+          x: rand(0, w),
+          y: initial ? rand(0, h) : rand(-h * 0.15, -10),
+          r,
+          vy: rand(0.6, 2.2) + r * 0.25,
+          vx: rand(-0.35, 0.35),
+          sway: rand(0.6, 1.6),
+          phase: rand(0, Math.PI * 2)
+        };
+      }
+
+      function resetFlakes(){
+        flakes.length = 0;
+        for (let i = 0; i < FLAKE_COUNT; i++) flakes.push(makeFlake(true));
+      }
+
+      let last = performance.now();
+      function draw(ts){
+        const dt = Math.min(32, ts - last);
+        last = ts;
+
+        ctx.clearRect(0, 0, w, h);
+        ctx.beginPath();
+
+        for (const f of flakes){
+          f.phase += 0.0018 * dt;
+          f.y += f.vy * (dt * 0.06);
+          f.x += (f.vx + Math.sin(f.phase) * 0.25 * f.sway) * (dt * 0.06);
+
+          if (f.x < -10) f.x = w + 10;
+          if (f.x > w + 10) f.x = -10;
+
+          if (f.y > h + 10){
+            Object.assign(f, makeFlake(false));
+          }
+
+          ctx.moveTo(f.x + f.r, f.y);
+          ctx.arc(f.x, f.y, f.r, 0, Math.PI * 2);
+        }
+
+        // легкий "пухнастий" білий сніг
+        ctx.fillStyle = 'rgba(255,255,255,0.9)';
+        ctx.fill();
+
+        if (!document.hidden) requestAnimationFrame(draw);
+      }
+
+      resize();
+      resetFlakes();
+      requestAnimationFrame(draw);
+
+      window.addEventListener('resize', () => {
+        resize();
+        resetFlakes();
+      }, { passive: true });
+
+      document.addEventListener('visibilitychange', () => {
+        if (!document.hidden) {
+          last = performance.now();
+          requestAnimationFrame(draw);
+        }
+      });
+    })();
+
+    // Плавний скрол до секцій + підсвітка секції
+    const flashSection = (el) => {
+      if (!el) return;
+      // Перезапуск анімації, якщо клікнули повторно
+      el.classList.remove('flash-section');
+      void el.offsetWidth;
+      el.classList.add('flash-section');
+      window.setTimeout(() => el.classList.remove('flash-section'), 1400);
+    };
+
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', (e) => {
+        const id = a.getAttribute('href');
+        if (!id || id === '#') return;
+        const el = document.querySelector(id);
+        if (!el) return;
+        e.preventDefault();
+        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        history.replaceState(null, '', id);
+        // Підсвітити секцію після початку скролу
+        window.setTimeout(() => flashSection(el), 250);
+      });
+    });
+
+    // Якщо сторінка відкрилась одразу з #секцією — теж підсвітити
+    window.addEventListener('load', () => {
+      if (location.hash) {
+        const el = document.querySelector(location.hash);
+        if (el) window.setTimeout(() => flashSection(el), 200);
+      }
+    });
+  </script>
+</body>
+</html>
